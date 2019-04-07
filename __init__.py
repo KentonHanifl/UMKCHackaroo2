@@ -1,5 +1,5 @@
 from adapt.intent import IntentBuilder
-from mycroft.skills.core import MycroftSkill, intent_handler
+from mycroft.skills.core import MycroftSkill, intent_file_handler
 from mycroft.util.log import LOG
 import json
 
@@ -43,12 +43,13 @@ class FoodRecepiesSkill(MycroftSkill):
         return False
 
     def query(q):
-    #queries for the first recipe with the query string in its title
-    for recipe in data:
-        try:
-            return recipe
-        except KeyError:
-            pass #just an empty recipe, don't pay attention
+        #queries for the first recipe with the query string in its title
+        for recipe in data:
+            try:
+                if q in recipe['title']:
+                    return recipe
+            except KeyError:
+                pass #just an empty recipe, don't pay attention
 
 def create_skill():
     return TemplateSkill()
