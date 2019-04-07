@@ -22,8 +22,7 @@ class FoodRecepiesSkill(MycroftSkill):
         #save the top 3 responses
         self.recipe = self.query(q)
         
-        speakstring = "I found a recepie for recipes for " + self.recipe +
-            "say Hey MyCroft tell me the ingredients to get the ingredients or Hey MyCroft tell me the recipe to get the recipe"
+        speakstring = "I found a recepie for recipes for " + self.recipe + "say Hey MyCroft tell me the ingredients to get the ingredients or Hey MyCroft tell me the recipe to get the recipe"
         
         self.speak(speakstring)
         
