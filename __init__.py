@@ -9,7 +9,7 @@ class FoodRecipiesSkill(MycroftSkill):
         super(FoodRecipiesSkill, self).__init__(name="FoodRecipiesSkill")
         
         #TODO write the full path (?)
-        with open('full_format_recipes.txt') as json_file:  
+        with open('/home/pi/skills/umkchackaroo2.kentonschool/full_format_recipes.txt') as json_file:  
             self.data = json.load(json_file)
 
         self.recipe = " no recipes found yet"
