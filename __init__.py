@@ -17,7 +17,7 @@ class FoodRecipiesSkill(MycroftSkill):
     @intent_file_handler('Recipe.intent')
     def handle_getrecipies_intent(self, message):
         utt = message.data
-        q = utt.replace('get me a recipe for ','')
+        q = utt.replace('recipe recipe recipe ','')
 
         #save the top 3 responses
         self.recipe = self.query(q)
