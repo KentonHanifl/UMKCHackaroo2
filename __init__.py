@@ -17,14 +17,17 @@ class FoodRecipiesSkill(MycroftSkill):
     @intent_file_handler('Recipe.intent')
     def handle_getrecipies_intent(self, message):
         utt = message.data
-        q = utt.replace('recipe recipe recipe ','')
+        try:
+            q = utt.replace('recipe for ','')
 
-        #save the top 3 responses
-        self.recipe = self.query(q)
-        
-        speakstring = "I found a recepie for " + self.recipe['title'] + ". say Hey MyCroft tell me the ingredients to get the ingredients or Hey MyCroft tell me the recipe to get the recipe"
-        
-        self.speak(speakstring)
+            #save the top 3 responses
+            self.recipe = self.query(q)
+            
+            speakstring = "I found a recepie for " + self.recipe['title'] + ". say Hey MyCroft tell me the ingredients to get the ingredients or Hey MyCroft tell me the recipe to get the recipe"
+            
+            self.speak(speakstring)
+        except:
+            self.speak("i couldn't find a recepie. sorry.")
         
 
     @intent_file_handler('Ingredients.intent')
