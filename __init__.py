@@ -16,7 +16,7 @@ class FoodRecipiesSkill(MycroftSkill):
         
     @intent_file_handler('Recipe.intent')
     def handle_getrecipies_intent(self, message):
-        utt = message.data
+        utt = message.data.get('utterance')
         try:
             q = utt.replace('recipe for ','')
 
@@ -32,15 +32,21 @@ class FoodRecipiesSkill(MycroftSkill):
 
     @intent_file_handler('Ingredients.intent')
     def handle_ingredients_intent(self, message):
-        ingredients = self.recipe['ingredients']
-        for ingredient in ingredients:
-            self.speak(ingredient)
+        try:
+            ingredients = self.recipe['ingredients']
+            for ingredient in ingredients:
+                self.speak(ingredient)
+        except:
+            self.speak("i don't have any recipe to read ingredients for.")
 
     @intent_file_handler('Directions.intent')
     def handle_recipe_intent(self, message):
-        recipe = self.recipe['directions']
-        for step in recipe:
-            self.speak(step)
+        try:
+            recipe = self.recipe['directions']
+            for step in recipe:
+                self.speak(step)
+        except:
+            self.speak("i don't have any recipe to read.")
     
     def stop(self):
         return False
