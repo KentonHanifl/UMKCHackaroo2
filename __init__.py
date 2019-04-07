@@ -3,10 +3,10 @@ from mycroft.skills.core import MycroftSkill, intent_file_handler
 from mycroft.util.log import LOG
 import json
 
-class FoodRecepiesSkill(MycroftSkill):
+class FoodRecipiesSkill(MycroftSkill):
 
     def __init__(self):
-        super(FoodRecepiesSkill, self).__init__(name="FoodRecepiesSkill")
+        super(FoodRecipiesSkill, self).__init__(name="FoodRecipiesSkill")
         
         #TODO write the full path (?)
         with open('full_format_recipes.txt') as json_file:  
@@ -52,4 +52,4 @@ class FoodRecepiesSkill(MycroftSkill):
                 pass #just an empty recipe, don't pay attention
 
 def create_skill():
-    return TemplateSkill()
+    return FoodRecipiesSkill()
