@@ -22,7 +22,7 @@ class FoodRecipiesSkill(MycroftSkill):
         #save the top 3 responses
         self.recipe = self.query(q)
         
-        speakstring = "I found a recepie for recipes for " + self.recipe + "say Hey MyCroft tell me the ingredients to get the ingredients or Hey MyCroft tell me the recipe to get the recipe"
+        speakstring = "I found a recepie for " + self.recipe['title'] + ". say Hey MyCroft tell me the ingredients to get the ingredients or Hey MyCroft tell me the recipe to get the recipe"
         
         self.speak(speakstring)
         
@@ -42,11 +42,11 @@ class FoodRecipiesSkill(MycroftSkill):
     def stop(self):
         return False
 
-    def query(q):
+    def query(self, q):
         #queries for the first recipe with the query string in its title
-        for recipe in data:
+        for recipe in self.data:
             try:
-                if q in recipe['title']:
+                if q in recipe['title'].lower():
                     return recipe
             except KeyError:
                 pass #just an empty recipe, don't pay attention
